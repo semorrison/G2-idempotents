@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    127370,       2893]
-NotebookOptionsPosition[    123787,       2776]
-NotebookOutlinePosition[    124176,       2793]
-CellTagsIndexPosition[    124133,       2790]
+NotebookDataLength[    130780,       3018]
+NotebookOptionsPosition[    126527,       2880]
+NotebookOutlinePosition[    126916,       2897]
+CellTagsIndexPosition[    126873,       2894]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2754,24 +2754,128 @@ Cell["Harder idempotent calculations", "Subsubsection",
 Cell["5 factors is doable overnight, haven' t tried 6.", "Text",
  CellChangeTimes->{{3.659510829592123*^9, 3.659510843237574*^9}}],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"idempotent", "[", 
-   RowBox[{"{", 
-    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], "]"}], 
-  ";"}]], "Input",
- CellChangeTimes->{{3.659407346169901*^9, 3.659407346284533*^9}, {
-  3.659409477390785*^9, 3.659409477865597*^9}, {3.6594718657918377`*^9, 
-  3.659471908591558*^9}}],
+Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"idempotent", "[", 
-  RowBox[{"{", 
-   RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6"}], "}"}], 
+ RowBox[{"Head", "[", 
+  RowBox[{"inclusion", "[", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}], "]"}], 
   "]"}]], "Input",
- CellChangeTimes->{{3.659407346169901*^9, 3.659407346284533*^9}, {
-  3.659409477390785*^9, 3.659409477865597*^9}, {3.6594320301131153`*^9, 
-  3.659432032069313*^9}, {3.659471867620282*^9, 3.659471879948552*^9}}]
+ CellChangeTimes->{{3.659574182928927*^9, 3.6595741871874743`*^9}, {
+  3.6595742180022783`*^9, 3.659574218303401*^9}}],
+
+Cell[BoxData["RepresentationTensor"], "Output",
+ CellChangeTimes->{3.65957418818504*^9, 3.6595742190757732`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"paths", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"paths", "[", "n", "]"}], "=", 
+   RowBox[{"Rest", "/@", 
+    RowBox[{"Cases", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"FoldList", "[", 
+         RowBox[{"Plus", ",", "0", ",", "#"}], "]"}], "&"}], "/@", 
+       RowBox[{"Tuples", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"-", "1"}]}], "}"}], ",", "n"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"__", "?", "NonNegative"}], "}"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.659574276459111*^9, 3.659574355055024*^9}}],
+
+Cell[BoxData[
+ RowBox[{"paths", "[", "4", "]"}]], "Input",
+ CellChangeTimes->{{3.6595743933279877`*^9, 3.659574394601215*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Print", "[", "#", "]"}], ";", 
+      RowBox[{"Head", "[", 
+       RowBox[{"idempotent", "[", "#", "]"}], "]"}]}], ")"}], "&"}], "/@", 
+   RowBox[{"paths", "[", "4", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.659574410155615*^9, 3.65957442162389*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4"}], "}"}]], "Print",
+ CellChangeTimes->{3.6595744352973347`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "2"}], "}"}]], "Print",
+ CellChangeTimes->{3.659574481393786*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "1", ",", "2"}], "}"}]], "Print",
+ CellChangeTimes->{3.659574520898888*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "1", ",", "0"}], "}"}]], "Print",
+ CellChangeTimes->{3.659574543255569*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "0", ",", "1", ",", "2"}], "}"}]], "Print",
+ CellChangeTimes->{3.659574556815982*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "0", ",", "1", ",", "0"}], "}"}]], "Print",
+ CellChangeTimes->{3.659574572305846*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Print", "[", "#", "]"}], ";", 
+      RowBox[{"Head", "[", 
+       RowBox[{"idempotent", "[", "#", "]"}], "]"}]}], ")"}], "&"}], "/@", 
+   RowBox[{"paths", "[", "5", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.659574410155615*^9, 3.659574437402829*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}]], "Print",
+ CellChangeTimes->{3.659574580501376*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.659582370492947*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"Print", "[", "#", "]"}], ";", 
+      RowBox[{"Head", "[", 
+       RowBox[{"idempotent", "[", "#", "]"}], "]"}]}], ")"}], "&"}], "/@", 
+   RowBox[{"paths", "[", "6", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.659574410155615*^9, 3.6595744405437927`*^9}}]
 }, Open  ]]
 },
 AutoGeneratedPackage->Automatic,
@@ -2892,8 +2996,29 @@ Cell[122575, 2739, 203, 6, 28, "Input"]
 Cell[CellGroupData[{
 Cell[122815, 2750, 123, 1, 35, "Subsubsection"],
 Cell[122941, 2753, 130, 1, 30, "Text"],
-Cell[123074, 2756, 329, 8, 28, "Input"],
-Cell[123406, 2766, 365, 7, 28, "Input"]
+Cell[CellGroupData[{
+Cell[123096, 2758, 294, 7, 28, "Input"],
+Cell[123393, 2767, 112, 1, 28, "Output"]
+}, Open  ]],
+Cell[123520, 2771, 649, 19, 46, "Input"],
+Cell[124172, 2792, 126, 2, 28, "Input"],
+Cell[CellGroupData[{
+Cell[124323, 2798, 349, 10, 28, "Input"],
+Cell[CellGroupData[{
+Cell[124697, 2812, 136, 3, 21, "Print"],
+Cell[124836, 2817, 134, 3, 21, "Print"],
+Cell[124973, 2822, 134, 3, 21, "Print"],
+Cell[125110, 2827, 134, 3, 21, "Print"],
+Cell[125247, 2832, 134, 3, 21, "Print"],
+Cell[125384, 2837, 134, 3, 21, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[125567, 2846, 350, 10, 28, "Input"],
+Cell[125920, 2858, 144, 3, 21, "Print"],
+Cell[126067, 2863, 77, 1, 28, "Output"]
+}, Open  ]],
+Cell[126159, 2867, 352, 10, 28, "Input"]
 }, Open  ]]
 }
 ]
